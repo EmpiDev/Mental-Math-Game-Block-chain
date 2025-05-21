@@ -1,11 +1,15 @@
 // client/src/App.js
 import React, { useState, useEffect, useCallback } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import { ethers } from "ethers";
 import "./App.css";
 
 // Importer l'ABI et l'adresse du contrat
 import MentalMathGameArtifact from "./contracts/MentalMathGame.json";
 import contractAddressData from "./contracts/contract-address.json";
+import NavBar from "./NavBar";
+import Game from "./Game";
+import Admin from "./Admin";
 
 const CONTRACT_ADDRESS = contractAddressData.MentalMathGame;
 const CONTRACT_ABI = MentalMathGameArtifact.abi;
@@ -241,83 +245,55 @@ function App() {
   };
 
   return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Jeu de Calcul Mental Décentralisé</h1>
-        {!account ? (
-          <button onClick={connectWallet}>
-            Connecter le Portefeuille (MetaMask)
-          </button>
-        ) : (
-          <div>
-            <p>
-              Connecté : {account.substring(0, 6)}...
-              {account.substring(account.length - 4)}
-            </p>
-            <p>Votre Solde ETH : {balance} ETH</p>
-            <p>Solde du Contrat : {contractBalance} ETH</p>
-            <p>Récompense par question : {rewardValue} ETH</p>
-          </div>
-        )}
-
-        {/* Interface admin */}
-        {isOwner && contract && (
-          <div className="admin-panel">
-            <h3>Admin</h3>
-            <form onSubmit={handleAddQuestion} style={{ marginBottom: "1em" }}>
-              <input
-                type="text"
-                value={newQuestion}
-                onChange={(e) => setNewQuestion(e.target.value)}
-                placeholder="Nouvelle question (ex: 5+7)"
-                required
-              />
-              <input
-                type="number"
-                value={newSolution}
-                onChange={(e) => setNewSolution(e.target.value)}
-                placeholder="Solution (ex: 12)"
-                required
-              />
-              <button type="submit">Ajouter la question</button>
-            </form>
-            <button
-              onClick={handleSetFirstActive}
-              style={{ marginRight: "0.5em" }}
-            >
-              Activer la première question
+    <Router>
+      <div className="App">
+        <NavBar isOwner={isOwner} />
+        <header className="App-header">
+          {!account ? (
+            <button onClick={connectWallet}>
+              Connecter le Portefeuille (MetaMask)
             </button>
-            <button onClick={handleNextQuestion}>
-              Passer à la question suivante
-            </button>
-          </div>
-        )}
-
-        {contract && isQuestionActive && (
-          <div className="game-area">
-            <h2>Question : {currentProblem}</h2>
-            <form onSubmit={handleSubmitAnswer}>
-              <input
-                type="number"
-                value={userAnswer}
-                onChange={(e) => setUserAnswer(e.target.value)}
-                placeholder="Votre réponse"
-                required
-              />
-              <button type="submit">Soumettre</button>
-            </form>
-          </div>
-        )}
-        {contract && !isQuestionActive && (
-          <p>
-            Aucune question active pour le moment. L'administrateur doit en
-            définir une ou passer à la suivante.
-          </p>
-        )}
-
-        {feedback && <p className="feedback">{feedback}</p>}
-      </header>
-    </div>
+          ) : null}
+          <Routes>
+            <Route
+              path="/"
+              element={
+                <Game
+                  account={account}
+                  balance={balance}
+                  contractBalance={contractBalance}
+                  rewardValue={rewardValue}
+                  contract={contract}
+                  isQuestionActive={isQuestionActive}
+                  currentProblem={currentProblem}
+                  userAnswer={userAnswer}
+                  setUserAnswer={setUserAnswer}
+                  handleSubmitAnswer={handleSubmitAnswer}
+                  feedback={feedback}
+                />
+              }
+            />
+            <Route
+              path="/admin"
+              element={
+                <Admin
+                  isOwner={isOwner}
+                  contract={contract}
+                  newQuestion={newQuestion}
+                  setNewQuestion={setNewQuestion}
+                  newSolution={newSolution}
+                  setNewSolution={setNewSolution}
+                  handleAddQuestion={handleAddQuestion}
+                  handleSetFirstActive={handleSetFirstActive}
+                  handleNextQuestion={handleNextQuestion}
+                  feedback={feedback}
+                />
+              }
+            />
+          </Routes>
+        </header>
+      </div>
+    </Router>
   );
 }
 
