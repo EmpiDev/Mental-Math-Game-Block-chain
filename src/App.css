@@ -1,38 +1,182 @@
-.App {
-  text-align: center;
+/* client/src/App.css */
+@keyframes gradientAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
-}
-
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
+body {
+  background: linear-gradient(135deg, #e0eafc, #cfdef3);
+  background-size: 200% 200%;
+  animation: gradientAnimation 15s ease infinite;
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  margin: 0;
+  font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  color: #333; /* Darker default text color for light theme */
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+.App {
+    text-align: center;
   }
+  
+.App-header {
+  background: rgba(255, 255, 255, 0.9); /* Lighter background */
+  box-shadow: 0 8px 30px 0 rgba(0, 0, 0, 0.1); /* Softer shadow for light theme */
+  border-radius: 28px;
+  padding: 40px 32px;
+  margin: 40px auto;
+  max-width: 550px;
+  border: 1px solid rgba(0, 0, 0, 0.08); /* Subtle border */
+  backdrop-filter: blur(10px); /* Can be more pronounced on light themes */
+  transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.App-header:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 35px 0 rgba(0, 0, 0, 0.12);
+}
+
+h1 {
+  font-size: 2.8rem;
+  /* Adjusted gradient for light theme - can be tricky, might need more vibrant colors or solid */
+  background: linear-gradient(90deg, #4facfe, #00f2fe, #43e97b, #4facfe);
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent; 
+  margin-bottom: 32px;
+  letter-spacing: 2px;
+  text-shadow: none; /* Text shadow might not be needed or can be very subtle */
+  animation: animatedGradientText 5s linear infinite;
+}
+
+@keyframes animatedGradientText {
   to {
-    transform: rotate(360deg);
+    background-position: -200% center;
+  }
+}
+
+.admin-panel, .game-area { 
+  background: rgba(255, 255, 255, 0.8);
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-radius: 16px;
+  padding: 24px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 15px 0 rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease-in-out;
+}
+
+.admin-panel:hover, .game-area:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px 0 rgba(0, 0, 0, 0.1);
+}
+
+.admin-panel { 
+  border-color: rgba(77, 175, 255, 0.5); /* Light blue accent for admin */
+}
+
+
+input[type="text"], input[type="number"] {
+  background: rgba(255, 255, 255, 0.9);
+  border: 1.5px solid rgba(0, 0, 0, 0.2);
+  border-radius: 8px; 
+  color: #333; /* Dark text for inputs */
+  padding: 12px 16px; 
+  outline: none;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease; 
+  width: calc(100% - 32px); 
+  margin-bottom: 10px; 
+}
+input[type="text"]:focus, input[type="number"]:focus {
+  border-color: #4facfe; /* Vibrant focus color */
+  box-shadow: 0 0 8px rgba(79, 172, 254, 0.4);
+}
+
+button {
+  background: linear-gradient(90deg, #4facfe, #00f2fe);
+  color: #fff; /* White text on vibrant button */
+  font-weight: bold;
+  font-size: 1.05rem; 
+  border-radius: 8px;
+  padding: 12px 28px; 
+  box-shadow: 0 4px 12px 0 rgba(79, 172, 254, 0.3);
+  border: none;
+  cursor: pointer; 
+  margin-top: 10px;
+  transition: all 0.2s ease-in-out; 
+}
+button:hover {
+  background: linear-gradient(90deg, #00f2fe, #4facfe);
+  transform: translateY(-3px) scale(1.05); 
+  box-shadow: 0 6px 16px 0 rgba(0, 242, 254, 0.4);
+}
+
+button:active {
+  transform: translateY(-1px) scale(1.02); 
+  box-shadow: 0 2px 8px 0 rgba(0,0,0,0.15);
+}
+
+.feedback {
+  margin-top: 28px;
+  font-style: italic;
+  color: #2a9d8f; /* A calm, positive color for feedback on light theme */
+  font-size: 1.2rem;
+  text-shadow: none;
+}
+
+p {
+  margin: 12px 0; 
+  font-size: 1.1rem;
+  color: #454545; /* Darker grey for paragraph text */
+  line-height: 1.6; 
+}
+
+::-webkit-scrollbar {
+  width: 10px; 
+  background: #f0f0f0; /* Light scrollbar track */
+}
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #4facfe, #00f2fe); 
+  border-radius: 10px;
+  border: 2px solid #f0f0f0; 
+}
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #00f2fe, #4facfe);
+}
+
+@media (max-width: 768px) { 
+  .App-header {
+    padding: 30px 20px; 
+    margin: 20px auto;
+    max-width: 95vw;
+  }
+  .game-area, .admin-panel {
+    padding: 18px 15px;
+  }
+  h1 {
+    font-size: 2.4rem; 
+  }
+  input[type="text"], input[type="number"] {
+    padding: 10px 14px;
+  }
+  button {
+    padding: 10px 20px;
+    font-size: 1rem;
+  }
+}
+
+@media (max-width: 480px) { 
+  .App-header {
+    padding: 20px 15px;
+    border-radius: 20px;
+  }
+  h1 {
+    font-size: 2rem;
+    letter-spacing: 1px;
+  }
+  .game-area, .admin-panel {
+    padding: 15px 10px;
+    border-radius: 12px;
   }
 }
