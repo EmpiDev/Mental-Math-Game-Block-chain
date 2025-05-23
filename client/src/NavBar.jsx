@@ -10,6 +10,9 @@ const NavBar = ({ isOwner }) => {
         <li>
           <Link to="/" className={location.pathname === "/" ? "active" : ""}>Jeu</Link>
         </li>
+        <li>
+          <Link to="/about" className={location.pathname === "/about" ? "active" : ""}>À propos</Link>
+        </li>
         {isOwner && (
           <li>
             <Link to="/admin" className={location.pathname === "/admin" ? "active" : ""}>Admin</Link>

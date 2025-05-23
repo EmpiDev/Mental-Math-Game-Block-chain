@@ -10,6 +10,7 @@ import contractAddressData from "./contracts/contract-address.json";
 import NavBar from "./NavBar";
 import Game from "./Game";
 import Admin from "./Admin";
+import About from "./About";
 
 const CONTRACT_ADDRESS = contractAddressData.MentalMathGame;
 const CONTRACT_ABI = MentalMathGameArtifact.abi;
@@ -272,6 +273,10 @@ function App() {
                   feedback={feedback}
                 />
               }
+            />
+            <Route
+              path="/about"
+              element={<About />}
             />
             <Route
               path="/admin"
