@@ -1,24 +1,31 @@
-
 **Table des Matières**
 
-1. Introduction
-2. Architecture Technique
-   2.1. Vue d'Ensemble
-   2.2. Diagramme Architectural
-3. Rôle de Chaque Composant
-   3.1. React (Frontend)
-   3.2. Ethers.js
-   3.3. MetaMask (Portefeuille)
-   3.4. Ganache (Blockchain Locale)
-   3.5. Hardhat (Framework de Développement)
-   3.6. Smart Contract MentalMathGame.sol
-4. Fonctionnement de la Logique de Récompense
-5. Déploiement et Test de l'Application Localement
-   5.1. Prérequis
-   5.2. Déploiement du Smart Contract
-   5.3. Lancement du Frontend
-   5.4. Test de l'Application
-6. Conclusion
+1. [Introduction](#introduction)
+2. [Comment y jouer](#1-comment-y-jouer)
+   1. [Connexion du portefeuille](#11-connexion-du-portefeuille)
+   2. [Répondre à une question](#12-répondre-à-une-question)
+   3. [Réception de la récompense](#13-réception-de-la-récompense)
+   4. [Lancement des questions (admin)](#14-lancement-des-questions-pour-administrateur)
+   5. [Ajouter une nouvelle question](#15-ajouter-une-nouvelle-question)
+   6. [Question disponible pour les utilisateurs](#16-question-disponible-pour-les-utilisateurs)
+   7. [Navigation entre les questions](#17-navigation-entre-les-questions)
+3. [Architecture Technique](#2-architecture-technique)
+   1. [Vue d'Ensemble](#21-vue-densemble)
+   2. [Diagramme Architectural](#22-diagramme-architectural)
+4. [Rôle de Chaque Composant](#3-rôle-de-chaque-composant)
+   1. [React (Frontend)](#31-react-frontend)
+   2. [Ethers.js](#32-ethersjs)
+   3. [MetaMask (Portefeuille)](#33-metamask-portefeuille)
+   4. [Ganache (Blockchain Locale)](#34-ganache-blockchain-locale)
+   5. [Hardhat (Framework de Développement)](#35-hardhat-framework-de-développement)
+   6. [Smart Contract MentalMathGame.sol](#36-smart-contract-mentalmathgamesol)
+5. [Fonctionnement de la Logique de Récompense](#4-fonctionnement-de-la-logique-de-récompense)
+6. [Déploiement et Test de l'Application Localement](#5-déploiement-et-test-de-lapplication-localement)
+   1. [Prérequis](#51-prérequis)
+   2. [Déploiement du Smart Contract](#52-déploiement-du-smart-contract)
+   3. [Lancement du Frontend](#53-lancement-du-frontend)
+   4. [Test de l'Application](#54-test-de-lapplication)
+7. [Conclusion](#7-conclusion)
 
 ---
 
